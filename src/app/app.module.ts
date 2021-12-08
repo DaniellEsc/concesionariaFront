@@ -22,13 +22,15 @@ import { IndexComponent } from './index/index.component';
 
 import { InformeRechazoComponent } from './comercializadora/informe-rechazo/informe-rechazo.component';
 import { VerificacionDocumentosComponent } from './comercializadora/verificacion-documentos/verificacion-documentos.component';
-import { GenerarReclamoComponent } from './generar-reclamo/generar-reclamo.component';
-import { ListadoGarantiasComponent } from './listado-garantias/listado-garantias.component';
-import { CrearClienteComponent } from './crear-cliente/crear-cliente.component';
-import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizacion.component';
+
 import { VentaComponent } from './venta/venta.component';
-import { ListaCotizacionesComponent } from './lista-cotizaciones/lista-cotizaciones.component';
-import { ListarClientesComponent } from './listar-clientes/listar-clientes.component';
+import { GenerarReclamoComponent } from './concesionaria/generar-reclamo/generar-reclamo.component';
+import { CrearClienteComponent } from './concesionaria/crear-cliente/crear-cliente.component';
+import { GenerarCotizacionComponent } from './concesionaria/generar-cotizacion/generar-cotizacion.component';
+import { ListaCotizacionesComponent } from './concesionaria/lista-cotizaciones/lista-cotizaciones.component';
+import { ListarClientesComponent } from './concesionaria/listar-clientes/listar-clientes.component';
+import { ListadoGarantiasComponent } from './concesionaria/listado-garantias/listado-garantias.component';
+
 
 
 
@@ -47,12 +49,12 @@ import { ListarClientesComponent } from './listar-clientes/listar-clientes.compo
     VerificacionDocumentosComponent,
     InformeRechazoComponent,
     GenerarReclamoComponent,
-    ListadoGarantiasComponent,
     CrearClienteComponent,
     GenerarCotizacionComponent,
     VentaComponent,
     ListaCotizacionesComponent,
-    ListarClientesComponent
+    ListarClientesComponent,
+    ListadoGarantiasComponent
   ],
   imports: [
     BrowserModule,

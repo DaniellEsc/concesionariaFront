@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { TokenService } from '../service/token.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProdGuardService implements CanActivate {
-
+export class TallerGuardGuard implements CanActivate {
+  
   realRol: string;
 
   constructor(
@@ -31,11 +32,12 @@ export class ProdGuardService implements CanActivate {
   }*/
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRol = route.data.expectedRol;
-    this.realRol = this.tokenService.comercializadora() ? 'comercializadora' : 'concesionaria';
+    this.realRol = this.tokenService.comercializadora() ? 'comercializadora' : 'taller';
     if (!this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0) {
       this.router.navigate(['/']);
       return false;
     }
     return true;
   }
+  
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CotizacionService } from '../services/cotizacion/cotizacion.service';
+import { CotizacionService } from '../../services/cotizacion/cotizacion.service';
 
 @Component({
   selector: 'app-lista-cotizaciones',
