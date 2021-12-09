@@ -17,6 +17,7 @@ import { VentaComponent } from './venta/venta.component';
 import { CrearClienteComponent } from './concesionaria/crear-cliente/crear-cliente.component';
 import { ListarClientesComponent } from './concesionaria/listar-clientes/listar-clientes.component';
 import { TallerGuardGuard as guards} from './guards/taller-guard.guard';
+import { EditarClienteComponent } from './concesionaria/editar-cliente/editar-cliente.component';
 
 
 
@@ -27,16 +28,21 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'lista', component: ListaProductoComponent, canActivate: [guard], data: { expectedRol: ['comercializadora'] } },
   { path: 'venta', component: VentaComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] } },
+  {path: 'listarclientes', component: ListarClientesComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] }},
+  {path: 'creacion-cliente', component: CrearClienteComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] }},
+  { path: 'listar-garantias', component: ListadoGarantiasComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] } },
+  {path: 'editar-cliente', component: EditarClienteComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] } },
+  {path: 'cotizacion', component: GenerarCotizacionComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] } },
+  {path: 'lista-cotizaciones', component: ListaCotizacionesComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] }},
+  { path: 'reclamos-garantia', component: GenerarReclamoComponent, canActivate: [guard], data: { expectedRol: ['concesionaria'] } },
   { path: 'verificacion', component: VerificacionDocumentosComponent, canActivate: [guard], data: { expectedRol: ['comercializadora'] } },
   { path: 'nuevo', component: NuevoProductoComponent, canActivate: [guards], data: { expectedRol: ['taller'] } },
-  { path: 'reclamos', component: GenerarReclamoComponent, canActivate: [guard], data: { expectedRol: ['ROLE_CONCESONARIA'] } },
-  { path: 'listar-garantias', component: ListadoGarantiasComponent, canActivate: [guard], data: { expectedRol: ['ROLE_CONCESONARIA'] } },
+  
+
   { path: '**', redirectTo: '', pathMatch: 'full' },
-  {path: 'lista', component: ListaCotizacionesComponent},
-  {path: 'cotizacion', component: GenerarCotizacionComponent},
+  
   {path: 'vender', component: VentaComponent},
-  {path: 'listarclientes', component: ListarClientesComponent},
-  {path: 'creacion-cliente', component: CrearClienteComponent},
+  
 ];
 
 @NgModule({

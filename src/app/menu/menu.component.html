@@ -23,6 +23,16 @@
       <li class="nav-item" *ngIf="isLogged" >
         <a class="nav-link" routerLink="/venta" *ngIf="isConcesionaria" ><i class="far fa-list-alt" ></i> Detalle</a>
       </li>
+      <li class="nav-item" *ngIf="isLogged" >
+        <a class="nav-link" routerLink="/listarclientes" *ngIf="isConcesionaria" ><i class="far fa-list-alt" ></i>Clientes</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged" >
+        <a class="nav-link" routerLink="/lista-cotizaciones" *ngIf="isConcesionaria" ><i class="far fa-list-alt" ></i>Cotizaciones</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogged" >
+        <a class="nav-link" routerLink="/reclamos-garantia" *ngIf="isConcesionaria" ><i class="far fa-list-alt" ></i>Reclamos Garantia</a>
+      </li>
+      
       <li class="nav-item" *ngIf="!isLogged">
           <a class="nav-link"  routerLink="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
         </li>

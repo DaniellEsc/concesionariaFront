@@ -22,7 +22,7 @@ export class CrearClienteComponent implements OnInit {
       id_cliente: [''],
       cedula: ['', Validators.required],
       nombre: ['', Validators.required],
-      apellodo: ['', Validators.required],
+      apellido: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
 
     });

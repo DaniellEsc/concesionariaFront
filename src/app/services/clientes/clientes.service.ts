@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cliente } from '../../models/Cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,13 @@ export class ClientesService {
  
   public saveClientes(cliente:any):Observable<any>{
     return this.httpClient.post(this.API_SERVER,cliente);
+  }
+
+  public getClienteId(id: number){
+    return this.httpClient.get<Cliente>(this.API_SERVER+id);
+  }
+
+  UpdateCliente(cliente:Cliente){
+    return this.httpClient.put<Cliente>(this.API_SERVER + cliente.id_cliente, cliente);
   }
 }

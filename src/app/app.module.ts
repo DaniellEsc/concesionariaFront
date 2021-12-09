@@ -30,6 +30,7 @@ import { GenerarCotizacionComponent } from './concesionaria/generar-cotizacion/g
 import { ListaCotizacionesComponent } from './concesionaria/lista-cotizaciones/lista-cotizaciones.component';
 import { ListarClientesComponent } from './concesionaria/listar-clientes/listar-clientes.component';
 import { ListadoGarantiasComponent } from './concesionaria/listado-garantias/listado-garantias.component';
+import { EditarClienteComponent } from './concesionaria/editar-cliente/editar-cliente.component';
 
 
 
@@ -54,7 +55,8 @@ import { ListadoGarantiasComponent } from './concesionaria/listado-garantias/lis
     VentaComponent,
     ListaCotizacionesComponent,
     ListarClientesComponent,
-    ListadoGarantiasComponent
+    ListadoGarantiasComponent,
+    EditarClienteComponent
   ],
   imports: [
     BrowserModule,
