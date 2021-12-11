@@ -19,7 +19,7 @@ export class EditarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.Editar();
-  }
+  }  
 
   Editar(){
     let id=localStorage.getItem("id");

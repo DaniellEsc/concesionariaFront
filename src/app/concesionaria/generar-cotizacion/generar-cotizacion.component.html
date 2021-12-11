@@ -1,8 +1,10 @@
+<app-menu></app-menu>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
 <header>Cotizacion</header>
 
 <form id="form" [formGroup]="cotizacionForm" (ngSubmit)="guardar()">
+    <div class="underline"></div>
 
     <ul class="mt-5 mu=5">
         <!--Informacion Cliente-->
@@ -42,7 +44,7 @@
             <input type="text" formControlName="modelo">
         </li>
         <p align="right" class="mt-5">
-            <button class="btn btn-default" class="btn btn-primary" type="submit" >Enviar Cotizacion</button>
+            <button class="btn btn-default" class="btn btn-warning" type="submit" >Enviar Cotizacion</button>
         </p>
         
         <!--Garantia-->
@@ -53,5 +55,5 @@
 
 </form>
 <p align="right" class="mt-5" style="margin-right: 120px;">
-    <button class="btn btn-default" class="btn btn-primary" routerLink="/lista-cotizaciones">Regresar a la lista</button>
+    <button class="btn btn-default" class="btn btn-dark" routerLink="/lista-cotizaciones">Regresar a la lista</button>
 </p>

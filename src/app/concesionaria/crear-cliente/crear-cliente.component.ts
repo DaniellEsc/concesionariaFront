@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientesService } from '../../services/clientes/clientes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -14,7 +15,8 @@ export class CrearClienteComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    public clienteService: ClientesService
+    public clienteService: ClientesService,
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +32,13 @@ export class CrearClienteComponent implements OnInit {
 
   guardar(): void{
     this.clienteService.saveClientes(this.clienteForm.value).subscribe(resp =>{
+      alert("cliente actualizado");
+      this.router.navigate(["listarclientes"]);
       this.clienteForm.reset();
       this.clientes=this.clientes.filter(cliente => resp.id!==cliente.id);
       this.clientes.push(resp);
     },
-      error => {console.error(error)}
+      error => {console.error(error)} 
     )
   }
 

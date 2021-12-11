@@ -15,7 +15,7 @@ export class GenerarCotizacionComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    public cotizacionService: CotizacionService
+    public cotizacionService: CotizacionService 
   ) {}
 
   ngOnInit(): void {

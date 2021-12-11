@@ -21,6 +21,7 @@ export class ListarClientesComponent implements OnInit {
     private router: Router
   ) { }
 
+  filterPost='';
 
   ngOnInit(): void {
 
@@ -34,6 +35,22 @@ export class ListarClientesComponent implements OnInit {
   Editar(cliente:Cliente):void{
     localStorage.setItem("id", cliente.id_cliente.toString());
     this.router.navigate(["editar-cliente"]);
+  }
+
+  Venta(cliente:Cliente):void{
+    localStorage.setItem("id", cliente.id_cliente.toString());
+    this.router.navigate(["venta"]); 
+  }
+
+  Eliminar(cliente){
+    this.clienteService.deteleCliente(cliente.id_cliente).subscribe(resp=>{
+      if (resp===true) {
+        this.clientes.pop(cliente)
+        
+      }
+      alert("cliente Eliminado");
+     
+    })
   }
 
 }

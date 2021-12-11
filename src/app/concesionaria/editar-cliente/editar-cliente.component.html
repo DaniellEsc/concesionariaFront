@@ -1,40 +1,43 @@
+<app-menu></app-menu>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
-<header>Editar Cliente</header>
+<header class="mt-3">Editar Cliente</header>
 
 <form >
-
+    <div class="underline"></div>
     <ul class="mt-5 mu=5">
-
+        <!--cedula-->
         <li>
             <label>Cedula:</label>
             <input type="text" [(ngModel)]="cliente.cedula" name="cedula">
         </li>
+        <!--nombre-->
         <li>
             <label>Nombre:</label>
             <input type="text" [(ngModel)]="cliente.nombre" name="nombre">
         </li>
+        <!--apellido-->
         <li>
             <label>Apellido:</label>
             <input type="text" [(ngModel)]="cliente.apellido" name="apellodo">
         </li>
+        <!--fecha de nacimiento-->
         <li>
             <label class="mr-5">Fecha de Nacimiento:</label>
             <input type="date" [(ngModel)]="cliente.fecha_nacimiento" name="fecha_nacimiento">
         </li>
-
+        <!--boton de actualizar-->
         <p align="right" class="mt-5">
-            <button (click)="Actualizar(cliente)" class="btn btn-default" class="btn btn-primary">Editar</button>
+            <button (click)="Actualizar(cliente)" class="btn btn-default" class="btn btn-warning">Editar</button>
 
         </p>
 
-        <!--Garantia-->
+        <!--Linea baja-->
         <div class="underline"></div>
 
     </ul>
 
 
 </form>
-<p align="right" class="mt-5" style="margin-right: 225px;">
-    <button class="btn btn-default" class="btn btn-primary" routerLink="/listarclientes">Regresar a la lista</button>
+<p align="right" class="mt-5" style="margin-right: 190px;">
+    <button class="btn btn-default" class="btn btn-dark" routerLink="/listarclientes">Regresar a la lista</button>
 </p>
