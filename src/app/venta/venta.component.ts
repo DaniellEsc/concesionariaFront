@@ -9,6 +9,7 @@ import { Vehiculo } from '../models/Vehiculo';
 import { FacturaCabecera } from '../models/FacturaCabecera';
 import { FacturaCuerpo } from '../models/FacturaCuerpo';
 import { FacturaService } from '../services/factura/factura.service';
+import { FilterVehiculosPipe } from '../pipes/filter-vehiculos.pipe';
 
 
 @Component({
@@ -18,12 +19,17 @@ import { FacturaService } from '../services/factura/factura.service';
 })
 export class VentaComponent implements OnInit {
 
-  vehiculo: Vehiculo = new Vehiculo();
-  facturaCuerpo: FacturaCuerpo= new FacturaCuerpo();
-  facturaForm: FormGroup
+  vehiculos: Vehiculo = new Vehiculo();
+  detalleForm: FormGroup
   cliente: Cliente = new Cliente();
-  vehiculos: any;
+  facturaCuerpo: FacturaCuerpo =  new FacturaCuerpo();
+  facturaCabecera: FacturaCabecera =  new FacturaCabecera();
+  
   facturas:any;
+  detalles:any;
+  vehiculo:any;
+
+  filterPost='';
 
   constructor(
     public fb: FormBuilder,
@@ -36,21 +42,18 @@ export class VentaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.BuscarVehiculo();
-    this.facturaForm = this.fb.group({
-      id_factura:[''],
-      tipo:['', Validators.required],
-      fecha:[''],
-      id_cliente:[''],
+    
+    this.detalleForm = this.fb.group({
+      id_detalle:[''],
       subtotal:['',Validators.required],
       iva:['',Validators.required],
       total:['',Validators.required],
       placa:['',Validators.required]
-
-
     });;
 
     this.DatosCliente();
+    this.EncontrarVehiculo();
+
     this.vehiculosService.getAllVehiculos().subscribe(resp =>{
       this.vehiculos = resp;
     },
@@ -59,33 +62,38 @@ export class VentaComponent implements OnInit {
   }
 
 
-  Guardar(facturaCuerpo:FacturaCuerpo){
-    this.detalleService.createDetalle(facturaCuerpo)
+  Guardar(){
+    this.facturaService.createFactura(this.facturaCabecera)
     .subscribe(data=>{
+      
+    })
+    this.detalleService.createDetalle(this.facturaCuerpo)
+    .subscribe(data=>{
+      
       alert("Se agrego con exito");
     })
+    
   }
 
-  Editar(vehiculo:Vehiculo):void{
-    localStorage.setItem("id", vehiculo.placa);
-    this.router.navigate(["editar-cliente"]);
-  }
-
-  BuscarVehiculo(){
-    let id=localStorage.getItem("id");
-    this.vehiculosService.getVehiculoId(+id)
-    .subscribe(data=>{
-      this.vehiculo=data;
-    })
+  //Pruba guaradar placa en la tabla de factura cuerpo
+  GuardarDetalle(): void{
+    this.detalleService.saveDetalles(this.detalleForm.value).subscribe(resp=>{
+      this.detalleForm.reset();
+      
+    },
+    error =>{console.log(error)}
+    )
 
   }
 
+
+  //metodo no funcional no guarda los datos de la factura
   GuardarFactura(): void{
-    this.facturaService.saveFactura(this.facturaForm.value).subscribe(resp =>{
+    this.detalleService.saveDetalles(this.detalleForm.value).subscribe(resp =>{
       alert("detalle guardado");
-      this.facturaForm.reset();
-      this.facturas=this.facturas.filter(factura => resp.id!==factura.id);
-      this.facturas.push(resp);
+      this.detalleForm.reset();
+      this.detalles=this.detalles.filter(detalle => resp.id!==detalle.id);
+      this.detalles.push(resp);
     },
       error => {console.error(error)}
     )
@@ -93,6 +101,7 @@ export class VentaComponent implements OnInit {
 
   
 
+  //datos traidos del componente listar clientes  ingreso de datos en inputs
   DatosCliente(){
     let id=localStorage.getItem("id");
     this.service.getClienteId(+id)
@@ -100,4 +109,25 @@ export class VentaComponent implements OnInit {
       this.cliente=data;
     })
   }
+
+
+
+  //no vale traer los datos para el vehiculo de la tabla 
+  ElegirVehiculo(vehiculo:Vehiculo):void{
+    localStorage.setItem("id", vehiculo.placa.toString());
+    
+  }
+
+  //metodo para recuperar los datos del vehiculo metodo no funcional
+  EncontrarVehiculo(){
+    let id=localStorage.getItem("id");
+    this.vehiculosService.getVehiculoId(+id)
+    .subscribe(data=>{
+     
+    })
+  }
+
+
 }
+
+

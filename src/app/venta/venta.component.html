@@ -1,81 +1,86 @@
-
-    <app-menu></app-menu>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-    <div class="divToda">
-        <div class="container">
-            <h1 align="center">&bull; Generar venta &bull;</h1>
-        </div>
-
-        <form class="mt-5 mb-5" id="form" id="form" [formGroup]="facturaForm" (ngSubmit)="GuardarFactura()" >
-            <div class="underline"></div>
-            <ul class="mt-5 mu=5">
-                <!--Cedula-->
-                <li>
-                    <span class="input-group-btn">
-                        <label>Cedula:</label>
-                        <input disabled class="input2"  type="text" value="{{cliente.cedula}}"  name="cedula">
-                        <label>Nombre:</label>
-                        <input disabled class="input2" type="text" value="{{cliente.nombre}}" name="nombre">
-                        <label>Apellido:</label>
-                        <input disabled class="input2" type="text" value="{{cliente.apellido}}" name="apellido">
-                        <label>{{cliente.id_cliente}}</label>
-                        
-                    </span>
-                </li>
-                <!--Descripcion-->
-                <li>
-                    <label>Descripción:</label>
-                    <textarea formControlName="tipo" class="input2"></textarea>
-                    <input type="text" formControlName="fecha" class="input2">
-                    <input formControlName="id_cliente" class="input2" type="text" value="{{cliente.id_cliente}}" name="apellido">
-                </li>
+<app-menu></app-menu>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<div class="container">
+    <h1 align="center">&bull; Generar venta &bull;</h1>
+</div>
+<form class="mt-5 mb-5" >
+    <div class="underline"></div>
+    <ul class="mt-5 mu=5">
+        <!--Datos Cliente-->
+        <li>
+            <span class="input-group-btn">
+                <!--cedula Cliente-->
+                <label>Cedula:</label>
+                <input disabled class="input2"  type="text" value="{{cliente.cedula}}"  name="cedula">
+                <!--nombre Cliente-->
+                <label>Nombre:</label>
+                <input disabled class="input2" type="text" value="{{cliente.nombre}}" name="nombre">
+                <!--apellido Cliente-->
+                <label>Apellido:</label>
+                    <input disabled class="input2" type="text" value="{{cliente.apellido}}" name="apellido">
+                <label >{{cliente.id_cliente}}</label>
+            </span>
+        </li>
+        <!--Descripcion-->
+        <li>
+            <label>Descripción:</label>
+            <textarea class="input2"></textarea>
+            <input name="id_cliente"  [(ngModel)]="facturaCabecera.id_cliente" class="input2" type="text" value="{{cliente.id_cliente}}">
+        </li>
+        <li>
+            <span class="input-group-btn">
                 <!--Cod vehiculo-->
-                <li>
-                    <span class="input-group-btn">
-                        <label>Cod vehiculo:</label>
-                        <input class="input2" type="text" id="vehi"   name="vehi">
-                        <button class="btn btn-default" class="btn btn-dark" type="button">Buscar codigo</button>
-                        
-                    </span>
-                </li>
-                <!--Modelo-->
-                <li>
-                    <label>Modelo:</label>
-                    <select class="input2" name="vehiculos">
-                        <option [ngValue]="item" *ngFor="let item of vehiculos" >{{item.placa}}</option>
-                    </select>
-                </li>
-                <!--Color-->
-                <li>
-                    <label for="mail">Color:</label>
-                    <input class="input2" type="text"  >
-                </li>
+                <label>Cod vehiculo:</label>
+                <input class="input2" type="text">
+                <!--Marca vehiculo-->
+                <label>Marca:</label>
+                <input  class="input2" type="text" >
+                <!--Modelo vehiculo-->
+                <label>Modelo:</label> 
+                <input class="input2" type="text">
+                
+            </span>
+        </li>
+        <!--placas del vehiculo por el momento-->
+        <li>
+            <label>Modelo:</label>
+            <select class="input2" name="vehiculos" >
+                <option [ngValue]="item" *ngFor="let item of vehiculo" >{{item.placa}}</option>
+            </select>
+        </li>
+         <!--Color-->
+         <li>
+            <label >Color:</label>
+            <input class="input2" type="text" >
+        </li>
+        <!--Subtotal-->
+        <li>
+            <label >Subtotal:</label>
+            <input name="subtotal"  [(ngModel)]="facturaCuerpo.subtotal" class="input2" type="text">
+        </li>
+        <!--iva-->
+        <li>
+            <label >Iva:</label>
+            <input name="iva" [(ngModel)]="facturaCuerpo.iva" class="input2" type="text">
+        </li>
+        <!--Total-->
+        <li>
+            <span class="input-group-btn">
+                <label>Total:</label>
+                <input name="total" type="text" class="form-control" [(ngModel)]="facturaCuerpo.total" class="input2" >
+                <input name="id" type="text" class="form-control" [(ngModel)]="facturaCuerpo.placa" class="input2" >
+                
+                <button class="btn btn-default" class="btn btn-dark" type="button">Calcular</button>
+            </span>
+        </li>
+         <!--Boton generar factura-->
+         <p align="right" class="mt-5">
+            <button (click)="Guardar()" class="btn" class="btn btn-warning" >Generar Factura</button>
+        </p>
+        <div class="underline mt-3"></div> 
+    </ul>
 
-                <!--Subtotal-->
-                <li>
-                    <label for="mail">Subtotal:</label>
-                    <input formControlName="subtotal" class="input2" type="text">
-                </li>
-                <!--iva-->
-                <li>
-                    <label for="mail">Iva:</label>
-                    <input formControlName="iva" class="input2" type="text">
-                </li>
+</form>
 
-                <!--Total-->
-                <li>
-                    <span class="input-group-btn">
-                        <label for="mail">Total:</label>
-                        <input formControlName="total" class="input2" type="text">
-                        <button class="btn btn-default" class="btn btn-dark" type="button">Calcular</button>
-                    </span>
-                </li>
-                <p align="right" class="mt-5">
-                    <button class="btn" class="btn btn-warning" type="submit">Generar Factura</button>
-                </p>
-            </ul>
-            <div class="underline mt-3"></div>
-        </form>
 
-    </div>
+ <!--Tabla de vehiculos-->

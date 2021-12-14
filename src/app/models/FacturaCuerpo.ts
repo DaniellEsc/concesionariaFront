@@ -4,7 +4,8 @@ export class FacturaCuerpo{
     id_cuerpo:number;
     subtotal:number;
     iva:number;
-    tatal:number;
+    total:number;
+    placa:string;
     facturaCabecera:FacturaCabecera;
-
+    
 }

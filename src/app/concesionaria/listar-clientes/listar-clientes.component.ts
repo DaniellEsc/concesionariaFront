@@ -30,7 +30,7 @@ export class ListarClientesComponent implements OnInit {
     },
      error => {console.error(error)}
     );
-  }
+  } 
 
   Editar(cliente:Cliente):void{
     localStorage.setItem("id", cliente.id_cliente.toString());
